@@ -1,0 +1,293 @@
+/* Variables de colores */
+:root {
+    --dark-bg: #121212;
+    --darker-bg: #0a0a0a;
+    --panel-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --accent-color: #b91c1c;
+    --accent-hover: #991b1b;
+    --border-color: #333333;
+    --input-bg: #252525;
+    --muted-text: #999999;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    background-image: url('/assets/background.svg');
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    padding-bottom: 80px;
+    position: relative;
+}
+
+.main-container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    max-width: 1200px;
+}
+
+/* Encabezado */
+header h1 {
+    font-family: 'Times New Roman', Times, serif;
+    color: var(--accent-color);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    font-size: 2.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+header h1:hover {
+    text-shadow: 2px 2px 15px rgba(185, 28, 28, 0.7);
+    transform: scale(1.02);
+}
+
+/* Panel de control */
+.control-panel {
+    background-color: var(--panel-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    height: 100%;
+    border: 1px solid var(--border-color);
+}
+
+.form-label {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.form-control, .form-select {
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.7rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #2a2a2a;
+    color: var(--text-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 0.2rem rgba(185, 28, 28, 0.25);
+}
+
+.form-check-input {
+    background-color: var(--input-bg);
+    border-color: var(--border-color);
+}
+
+.form-check-input:checked {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+.form-check-label small {
+    color: var(--muted-text);
+}
+
+/* Botones de opción */
+.option-btn {
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.btn-check:checked+.option-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+.option-btn:hover {
+    background-color: #2a2a2a;
+    color: var(--text-color);
+}
+
+/* Botón de generar */
+.generate-btn {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    padding: 0.8rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.generate-btn:hover, .generate-btn:focus {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor de historia */
+.story-container {
+    background-color: var(--panel-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    height: 100%;
+    border: 1px solid var(--border-color);
+    overflow-y: auto;
+    max-height: 600px;
+    position: relative;
+}
+
+.story-header h3 {
+    font-family: 'Times New Roman', Times, serif;
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.story-text {
+    font-family: 'Times New Roman', Times, serif;
+    line-height: 1.7;
+    text-align: justify;
+    white-space: pre-line;
+}
+
+/* Botones de descarga */
+.download-options {
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+}
+
+.download-btn {
+    transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: white;
+}
+
+.new-story-btn {
+    transition: all 0.3s ease;
+}
+
+.new-story-btn:hover {
+    background-color: #2a2a2a;
+    border-color: var(--border-color);
+}
+
+/* Estado vacío */
+#emptyState {
+    color: var(--muted-text);
+}
+
+.empty-icon {
+    font-size: 4rem;
+    opacity: 0.5;
+    color: var(--accent-color);
+}
+
+/* Cargando */
+#loadingIndicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Pie de página */
+.footer {
+    background-color: var(--darker-bg);
+    color: var(--muted-text);
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer a {
+    color: var(--muted-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: var(--accent-color);
+}
+
+/* Notificación Toast */
+.toast {
+    background-color: var(--panel-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.toast-header {
+    background-color: rgba(30, 30, 30, 0.9);
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Efectos de sangre */
+.blood-splatter {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background-image: url('/assets/blood-splatter.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.top-right {
+    top: 10px;
+    right: 10px;
+    transform: rotate(45deg);
+}
+
+.bottom-left {
+    bottom: 120px;
+    left: 10px;
+    transform: rotate(-45deg) scale(0.8);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-container {
+        padding-top: 1.5rem;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .control-panel, .story-container {
+        margin-bottom: 2rem;
+    }
+    
+    .story-container {
+        max-height: 400px;
+    }
+}

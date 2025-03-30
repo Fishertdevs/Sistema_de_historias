@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Historias de Terror</title>
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Bootstrap 5 para estilos responsive -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Eel JS -->
+    <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+    <div class="blood-splatter top-right"></div>
+    <div class="blood-splatter bottom-left"></div>
+    
+    <div class="container main-container">
+        <header>
+            <h1 class="text-center mb-4">
+                <i class="fas fa-ghost me-2"></i>Generador de Historias de Terror
+            </h1>
+        </header>
+        
+        <div class="row">
+            <div class="col-md-5">
+                <div class="control-panel">
+                    <form id="storyForm">
+                        <div class="mb-4">
+                            <label for="theme" class="form-label">
+                                <i class="fas fa-pencil-alt me-2"></i>Tema o Palabra Clave
+                            </label>
+                            <input type="text" class="form-control" id="theme" placeholder="Ej: casa abandonada, pesadilla, bosque..." required>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label">
+                                <i class="fas fa-ruler me-2"></i>Longitud de la Historia
+                            </label>
+                            <div class="btn-group length-options w-100" role="group">
+                                <input type="radio" class="btn-check" name="length" id="lengthShort" value="corta" autocomplete="off" checked>
+                                <label class="btn option-btn" for="lengthShort">Corta</label>
+                                
+                                <input type="radio" class="btn-check" name="length" id="lengthMedium" value="mediana" autocomplete="off">
+                                <label class="btn option-btn" for="lengthMedium">Mediana</label>
+                                
+                                <input type="radio" class="btn-check" name="length" id="lengthLong" value="larga" autocomplete="off">
+                                <label class="btn option-btn" for="lengthLong">Larga</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label">
+                                <i class="fas fa-skull me-2"></i>Estilo de Terror
+                            </label>
+                            <div class="style-options">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="style" id="stylePsycho" value="psicológico" checked>
+                                    <label class="form-check-label" for="stylePsycho">
+                                        <i class="fas fa-brain me-2"></i>Psicológico
+                                        <small class="d-block text-muted">Terror mental, paranoia, tensión y atmósfera inquietante</small>
+                                    </label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="style" id="styleParanormal" value="paranormal">
+                                    <label class="form-check-label" for="styleParanormal">
+                                        <i class="fas fa-ghost me-2"></i>Paranormal
+                                        <small class="d-block text-muted">Fantasmas, demonios, eventos sobrenaturales</small>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="style" id="styleGore" value="gore">
+                                    <label class="form-check-label" for="styleGore">
+                                        <i class="fas fa-tint me-2"></i>Gore
+                                        <small class="d-block text-muted">Sangre, violencia gráfica, horror corporal</small>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-danger btn-lg generate-btn" id="generateBtn">
+                                <i class="fas fa-magic me-2"></i>Generar Historia
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-md-7">
+                <div class="story-container">
+                    <div id="loadingIndicator" class="text-center d-none">
+                        <div class="spinner-border text-danger" role="status"></div>
+                        <p>Generando historia terrorífica...</p>
+                    </div>
+                    
+                    <div id="storyContent" class="d-none">
+                        <div class="story-header mb-3">
+                            <h3 id="storyTitle" class="mb-0">Título de la Historia</h3>
+                        </div>
+                        
+                        <div class="story-text">
+                            <div id="storyText"></div>
+                        </div>
+                        
+                        <div class="download-options mt-4">
+                            <div class="d-flex justify-content-between">
+                                <h5 class="mb-3">Descargar Historia:</h5>
+                                <button class="btn btn-outline-secondary btn-sm new-story-btn" id="newStoryBtn">
+                                    <i class="fas fa-plus me-1"></i>Nueva Historia
+                                </button>
+                            </div>
+                            
+                            <div class="btn-group w-100" role="group">
+                                <button class="btn btn-outline-danger download-btn" data-format="txt">
+                                    <i class="fas fa-file-alt me-2"></i>TXT
+                                </button>
+                                <button class="btn btn-outline-danger download-btn" data-format="pdf">
+                                    <i class="fas fa-file-pdf me-2"></i>PDF
+                                </button>
+                                <button class="btn btn-outline-danger download-btn" data-format="html">
+                                    <i class="fas fa-file-code me-2"></i>HTML
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="emptyState" class="text-center py-5">
+                        <i class="fas fa-book-dead empty-icon"></i>
+                        <h3 class="mt-3">Tu Historia de Terror</h3>
+                        <p>Completa el formulario y genera una historia terrorífica única</p>
+                    </div>
+                    
+                    <div id="errorMessage" class="alert alert-danger d-none" role="alert">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <span id="errorText"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer mt-5">
+        <div class="container text-center">
+            <p>Desarrollado por Harry fishert - 
+                <a href="https://github.com/Fishertdevs" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </p>
+        </div>
+    </footer>
+    
+    <!-- Notificación de descarga exitosa -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="downloadToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="fas fa-check-circle me-2 text-success"></i>
+                <strong class="me-auto">Descarga Exitosa</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <p id="downloadMessage"></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS Bundle con Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Scripts personalizados -->
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bloodGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#a00" stop-opacity="0.9"/>
+      <stop offset="70%" stop-color="#800" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#600" stop-opacity="0.7"/>
+    </radialGradient>
+    
+    <filter id="roughen">
+      <feTurbulence type="turbulence" baseFrequency="0.1" numOctaves="2" seed="3" stitchTiles="stitch" result="turbulence"/>
+      <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+  
+  <!-- Principal splatter -->
+  <circle cx="100" cy="100" r="30" fill="url(#bloodGradient)" filter="url(#roughen)" opacity="0.9"/>
+  
+  <!-- Gotas de sangre -->
+  <circle cx="130" cy="80" r="8" fill="url(#bloodGradient)" filter="url(#roughen)" opacity="0.8"/>
+  <circle cx="140" cy="110" r="10" fill="url(#bloodGradient)" filter="url(#roughen)" opacity="0.8"/>
+  <circle cx="80" cy="130" r="12" fill="url(#bloodGradient)" filter="url(#roughen)" opacity="0.7"/>
+  <circle cx="70" cy="70" r="7" fill="url(#bloodGradient)" filter="url(#roughen)" opacity="0.7"/>
+  
+  <!-- Pequeñas salpicaduras -->
+  <circle cx="160" cy="70" r="3" fill="#900" opacity="0.6"/>
+  <circle cx="50" cy="140" r="4" fill="#900" opacity="0.6"/>
+  <circle cx="150" cy="130" r="2" fill="#900" opacity="0.5"/>
+  <circle cx="40" cy="60" r="2" fill="#900" opacity="0.5"/>
+  <circle cx="55" cy="105" r="3" fill="#900" opacity="0.6"/>
+  <circle cx="125" cy="45" r="2" fill="#900" opacity="0.5"/>
+  
+  <!-- Chorros de sangre -->
+  <path d="M100,100 C120,90 140,60 150,30" stroke="#900" stroke-width="3" fill="none" opacity="0.7" filter="url(#roughen)"/>
+  <path d="M95,105 C90,130 70,145 60,165" stroke="#900" stroke-width="4" fill="none" opacity="0.7" filter="url(#roughen)"/>
+</svg>
