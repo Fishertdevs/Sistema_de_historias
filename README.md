@@ -1,6 +1,6 @@
 # Generador de Historias de Terror
 
-Una aplicación interactiva para generar historias de terror únicas y personalizadas. ¡Elige el tema, la longitud y el estilo de terror, y deja que la magia ocurra!
+Una aplicación interactiva con Eel  para generar historias de terror únicas y personalizadas. ¡Elige el tema, la longitud y el estilo de terror, y deja que la magia ocurra!
 
 ## Descripción
 
